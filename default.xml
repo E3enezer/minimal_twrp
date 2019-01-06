@@ -24,7 +24,7 @@
            sync-c="true"
            sync-j="4" />
 
-  <project path="build" name="android_build" remote="omnirom" revision="android-5.1" groups="pdk,tradefed" >
+  <!--<project path="build" name="android_build" remote="omnirom" revision="android-5.1" groups="pdk,tradefed" >
     <copyfile src="core/root.mk" dest="Makefile" />
   </project>
 
@@ -85,8 +85,8 @@
   <project path="prebuilts/misc" name="platform/prebuilts/misc" groups="pdk,tradefed" />
   <project path="prebuilts/ndk" name="platform/prebuilts/ndk" groups="pdk" />
   <project path="prebuilts/sdk" name="platform/prebuilts/sdk" groups="pdk,tradefed" />
-<!--  <project path="system/core" name="android_system_core" remote="omnirom" revision="android-5.1" groups="pdk" /> -->
-<!--  <project path="system/extras" name="android_system_extras" remote="omnirom" revision="android-5.1" groups="pdk" />-->
+  <project path="system/core" name="android_system_core" remote="omnirom" revision="android-5.1" groups="pdk" />
+  <project path="system/extras" name="android_system_extras" remote="omnirom" revision="android-5.1" groups="pdk" />
   <project path="system/netd" name="android_system_netd" groups="pdk" remote="omnirom" revision="android-5.1" />
-  <project path="vendor/omni" name="android_vendor_omni" remote="omnirom" revision="android-5.1" />
+  <project path="vendor/omni" name="android_vendor_omni" remote="omnirom" revision="android-5.1" /> -->
 </manifest>
