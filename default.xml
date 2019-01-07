@@ -1,92 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
+    <remote  name="TeamWin"
+             fetch="https://github.com/TeamWin" />
 
-  <remote  name="xda"
-           fetch=".." />
+<!-- TWRP lives in omnirom android-9.0 (not AOSP!) -->
+    <remove-project name="platform/bootable/recovery" />
+    <project path="bootable/recovery" name="android_bootable_recovery" remote="omnirom" revision="android-9.0" />
 
-  <remote  name="github"
-           fetch="https://github.com/" />
+<!-- The following directories are actually needed from android_frameworks_base (for FBE decryption)
+     * frameworks/base/core/java   (~46MB)
+     * frameworks/base/keystore/java  (<1MB)
+     And for TWRP
+     * frameworks/base/libs/services  (<1MB)
+     not only is it not worth syncing a 1GB repo for ~47MB for me, the added dependencies make
+     the minimal manifest unworkable.
+     So for those that do want to sync frameworks/base but don't want the build to break (eg framworks/support),
+     sync it to the staging are and only link the needed directories.
+-->
+    <project path="TeamWin/.repo/frameworks/base" name="android_frameworks_base" remote="omnirom" revision="android-9.0" clone-depth="1" >
+        <linkfile src="core/java" dest="frameworks/base/core/java" />
+        <linkfile src="keystore/java" dest="frameworks/base/keystore/java" />
+        <linkfile src="libs/services" dest="frameworks/base/libs/services" />
+    </project>
 
-  <remote  name="aosp"
-           fetch="https://android.googlesource.com"
-           review="android-review.googlesource.com" />
+<!-- Use OmniROM busybox -->
+    <project path="external/busybox" name="android_external_busybox" remote="TeamWin" revision="android-9.0" />
 
-  <remote  name="omnirom"
-           review="gerrit.omnirom.org"
-           fetch="https://github.com/omnirom" />
-           
-  <remote  name="TeamWin"
-           review="gerrit.twrp.me"
-           fetch="https://github.com/TeamWin" />
-
-  <default revision="refs/tags/android-5.1.1_r28"
-           remote="aosp"
-           sync-c="true"
-           sync-j="4" />
-
-  <project path="build" name="android_build" remote="omnirom" revision="android-5.1" groups="pdk,tradefed" >
-    <copyfile src="core/root.mk" dest="Makefile" />
-  </project>
-
-  <project path="android" name="android" remote="omnirom" revision="android-5.1" />
-  <!--<project path="bionic" name="android_bionic" remote="omnirom" revision="android-5.1" groups="pdk" />
-  <project path="bootable/recovery" name="android_bootable_recovery" remote="omnirom" revision="android-9.0" groups="pdk-cw-fs"/>
-  <project path="device/generic/goldfish" name="device/generic/goldfish" groups="pdk" />
-  <project path="external/bison" name="platform/external/bison" groups="pdk" />
-  <project path="external/bouncycastle" name="platform/external/bouncycastle" groups="pdk" />
-  <project path="external/busybox" name="android_external_busybox" remote="omnirom" revision="android-5.1" />
-  <project path="external/bzip2" name="platform/external/bzip2" groups="pdk" />
-  <project path="external/checkpolicy" name="platform/external/checkpolicy" groups="pdk" />
-  <project path="external/compiler-rt" name="platform/external/compiler-rt" groups="pdk" />
-  <project path="external/e2fsprogs" name="android_external_e2fsprogs" remote="omnirom" revision="android-5.1" groups="pdk" />
-  <project path="external/elfutils" name="platform/external/elfutils" groups="pdk" />
-  <project path="external/f2fs-tools" name="android_external_f2fs-tools" remote="omnirom" revision="android-5.1" groups="pdk" />
-  <project path="external/freetype" name="platform/external/freetype" groups="pdk" />
-  <project path="external/gcc-demangle" name="platform/external/gcc-demangle" groups="pdk" />
-  <project path="external/jemalloc" name="platform/external/jemalloc" groups="pdk" />
-  <project path="external/jpeg" name="android_external_jpeg" remote="omnirom" revision="android-5.1" groups="pdk-cw-fs" />
-  <project path="external/libcxx" name="platform/external/libcxx" groups="pdk" />
-  <project path="external/libcxxabi" name="platform/external/libcxxabi" groups="pdk" />
-  <project path="external/libnl" name="platform/external/libnl" groups="pdk" />
-  <project path="external/libpng" name="android_external_libpng" remote="omnirom" revision="android-5.1" />
-  <project path="external/libseccomp-helper" name="platform/external/libseccomp-helper" groups="pdk-cw-fs" />
-  <project path="external/libselinux" name="platform/external/libselinux" groups="pdk" />
-  <project path="external/libsepol" name="platform/external/libsepol" groups="pdk" />
-  <project path="external/libunwind" name="platform/external/libunwind" groups="pdk" />
-  <project path="external/llvm" name="android_external_llvm" remote="omnirom" revision="android-5.1" groups="pdk" />
-  <project path="external/lzma" name="platform/external/lzma" groups="pdk" />
-  <project path="external/mksh" name="platform/external/mksh" groups="pdk" />
-  <project path="external/ntfs-3g" name="android_external_ntfs-3g" remote="omnirom" revision="android-5.1"/>
-  <project path="external/openssl" name="platform/external/openssl" groups="pdk" />
-  <project path="external/pcre" name="platform/external/pcre" groups="pdk-cw-fs" />
-  <project path="external/safe-iop" name="platform/external/safe-iop" groups="pdk" />
-  <project path="external/sepolicy" name="android_external_sepolicy" remote="omnirom" revision="android-5.1" groups="pdk" />
-  <project path="external/stlport" name="platform/external/stlport" groups="pdk" />
-  <project path="external/zlib" name="platform/external/zlib" groups="pdk" />
-  <project path="frameworks/native" name="android_frameworks_native" remote="omnirom" revision="android-5.1" groups="pdk" />
-  <project path="hardware/libhardware" name="android_hardware_libhardware" remote="omnirom" revision="android-5.1" groups="pdk" />
-  <project path="hardware/qcom/keymaster" name="android_hardware_qcom_keymaster" remote="omnirom" revision="android-5.1" groups="qcom" />
-  <project path="libcore" name="android_libcore" remote="omnirom" revision="android-5.1" groups="pdk" />
-  <project path="libnativehelper" name="platform/libnativehelper" groups="pdk" />
-  <project path="prebuilts/clang/linux-x86/3.1" name="platform/prebuilts/clang/linux-x86/3.1" groups="pdk,linux" />
-  <project path="prebuilts/clang/linux-x86/3.2" name="platform/prebuilts/clang/linux-x86/3.2" groups="pdk,linux" />
-  <project path="prebuilts/clang/linux-x86/arm/3.3" name="platform/prebuilts/clang/linux-x86/arm/3.3" groups="arm,linux,pdk-cw-fs" />
-  <project path="prebuilts/clang/linux-x86/host/3.4" name="platform/prebuilts/clang/linux-x86/host/3.4" groups="pdk,linux" />
-  <project path="prebuilts/clang/linux-x86/host/3.5" name="platform/prebuilts/clang/linux-x86/host/3.5" groups="pdk,linux" />
-  <project path="prebuilts/clang/linux-x86/mips/3.3" name="platform/prebuilts/clang/linux-x86/mips/3.3" groups="linux,mips,pdk-cw-fs" />
-  <project path="prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.8" name="platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.8" groups="pdk,linux,arm" />
-  <project path="prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" name="platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" groups="pdk,linux,arm" />
-  <project path="prebuilts/gcc/linux-x86/arm/arm-eabi-4.4.3" name="android_prebuilts_gcc_linux-x86_arm_arm-eabi-4.4.3" groups="pdk,linux,arm" remote="omnirom" revision="android-5.1" />
-  <project path="prebuilts/gcc/linux-x86/arm/arm-eabi-4.7" name="android_prebuilts_gcc_linux-x86_arm_arm-eabi-4.7" remote="omnirom" revision="android-5.1" />
-  <project path="prebuilts/gcc/linux-x86/arm/arm-eabi-4.8" name="platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8" groups="pdk,linux,arm" />
-  <project path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8" name="platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8" groups="pdk,linux,arm" />
-  <project path="prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.8" name="platform/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.8" groups="pdk,linux,x86" />
-  <project path="prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9" name="platform/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9" groups="pdk,linux,x86" />
-  <project path="prebuilts/misc" name="platform/prebuilts/misc" groups="pdk,tradefed" />
-  <project path="prebuilts/ndk" name="platform/prebuilts/ndk" groups="pdk" />
-  <project path="prebuilts/sdk" name="platform/prebuilts/sdk" groups="pdk,tradefed" />
-  <project path="system/core" name="android_system_core" remote="omnirom" revision="android-5.1" groups="pdk" />
-  <project path="system/extras" name="android_system_extras" remote="omnirom" revision="android-5.1" groups="pdk" />
-  <project path="system/netd" name="android_system_netd" groups="pdk" remote="omnirom" revision="android-5.1" />
-  <project path="vendor/omni" name="android_vendor_omni" remote="omnirom" revision="android-5.1" /> -->
 </manifest>
