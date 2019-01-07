@@ -2,6 +2,10 @@
 <manifest>
     <remote  name="TeamWin"
              fetch="https://github.com/TeamWin" />
+    
+      <remote  name="omnirom"
+           fetch="https://github.com/omnirom"
+review="gerrit.omnirom.org" />
 
 <!-- TWRP lives in omnirom android-9.0 (not AOSP!) -->
     <project path="bootable/recovery" name="android_bootable_recovery" remote="omnirom" revision="android-9.0" />
