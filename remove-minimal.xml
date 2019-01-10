@@ -59,7 +59,7 @@
     <remove-project name="platform/external/google-fonts/cutive-mono" />
     <remove-project name="platform/external/google-fonts/dancing-script" />
     <remove-project name="platform/external/google-tv-pairing-protocol" />
-    <remove-project name="platform/external/guava" />
+    <!-- <remove-project name="platform/external/guava" /> -->
     <remove-project name="platform/external/guice" />
     <remove-project name="platform/external/hamcrest" />
     <remove-project name="platform/external/harfbuzz_ng" />
@@ -142,7 +142,7 @@
     <remove-project name="platform/external/noto-fonts" />
     <remove-project name="platform/external/oauth" />
     <remove-project name="platform/external/objenesis" />
-    <remove-project name="platform/external/okhttp" />
+    <!-- <remove-project name="platform/external/okhttp" /> -->
     <remove-project name="platform/external/opencv" />
     <remove-project name="platform/external/owasp/sanitizer" />
     <remove-project name="platform/external/parameter-framework" />
