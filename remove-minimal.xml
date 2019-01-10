@@ -117,7 +117,7 @@
     <remove-project name="platform/external/libvpx" />
     <remove-project name="platform/external/libvterm" />
     <remove-project name="platform/external/libxml2" />
-    <remove-project name="platform/external/libyuv" />
+    <!-- <remove-project name="platform/external/libyuv" /> -->
     <remove-project name="platform/external/linux-kselftest" />
     <remove-project name="platform/external/lisa" />
     <remove-project name="platform/external/lmfit" />
