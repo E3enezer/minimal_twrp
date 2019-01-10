@@ -27,7 +27,7 @@
     <remove-project name="platform/external/chromium-trace" />
     <remove-project name="platform/external/cmockery" />
     <remove-project name="platform/external/crcalc" />
-    <remove-project name="platform/external/curl" />
+    <!-- <remove-project name="platform/external/curl" /> -->
     <remove-project name="platform/external/dagger2" />
     <remove-project name="platform/external/deqp" />
     <remove-project name="platform/external/desugar" />
@@ -80,12 +80,12 @@
     <remove-project name="platform/external/jline" />
     <remove-project name="platform/external/jmdns" />
     <remove-project name="platform/external/jsilver" />
-    <remove-project name="platform/external/jsmn" />
-    <remove-project name="platform/external/jsoncpp" />
+    <!--<remove-project name="platform/external/jsmn" />-->
+    <!--<remove-project name="platform/external/jsoncpp" />-->
     <remove-project name="platform/external/jsr305" />
     <remove-project name="platform/external/jsr330" />
-    <remove-project name="platform/external/junit" />
-    <remove-project name="platform/external/junit-params" />
+    <!--<remove-project name="platform/external/junit" />
+    <remove-project name="platform/external/junit-params" /> -->
     <remove-project name="platform/external/kernel-headers" />
     <remove-project name="platform/external/ksoap2" />
     <remove-project name="platform/external/libavc" />
@@ -107,7 +107,7 @@
     <remove-project name="platform/external/libmpeg2" />
     <remove-project name="platform/external/libmtp" />
     <remove-project name="platform/external/libogg" />
-    <remove-project name="platform/external/libopus" />
+    <!--<remove-project name="platform/external/libopus" />-->
     <remove-project name="platform/external/libpcap" />
     <remove-project name="platform/external/libphonenumber" />
     <remove-project name="platform/external/libtextclassifier" />
