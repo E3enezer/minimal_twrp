@@ -82,8 +82,8 @@
     <remove-project name="platform/external/jsilver" />
     <!--<remove-project name="platform/external/jsmn" />-->
     <!--<remove-project name="platform/external/jsoncpp" />-->
-    <remove-project name="platform/external/jsr305" />
-    <remove-project name="platform/external/jsr330" />
+    <!-- <remove-project name="platform/external/jsr305" /> -->
+    <!-- <remove-project name="platform/external/jsr330" /> -->
     <!--<remove-project name="platform/external/junit" />
     <remove-project name="platform/external/junit-params" /> -->
     <remove-project name="platform/external/kernel-headers" />
@@ -114,7 +114,7 @@
     <remove-project name="platform/external/libusb" />
     <remove-project name="platform/external/libusb-compat" />
     <remove-project name="platform/external/libvncserver" />
-    <remove-project name="platform/external/libvpx" />
+    <!-- <remove-project name="platform/external/libvpx" /> -->
     <remove-project name="platform/external/libvterm" />
     <remove-project name="platform/external/libxml2" />
     <!-- <remove-project name="platform/external/libyuv" /> -->
@@ -355,7 +355,7 @@
     <remove-project name="platform/test/vts-testcase/vndk" />
 
     <remove-project name="platform/tools/adt/idea" />
-    <remove-project name="platform/tools/apksig" />
+    <!-- <remove-project name="platform/tools/apksig" /> -->
     <remove-project name="platform/tools/base" />
     <remove-project name="platform/tools/build" />
     <remove-project name="platform/tools/external/fat32lib" />
